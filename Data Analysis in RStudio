@@ -27,7 +27,7 @@ df_11 = read_csv("~/Desktop/Google Case Study/CSV Files/202203-divvy-tripdata.cs
 df_12 = read_csv("~/Desktop/Google Case Study/CSV Files/202204-divvy-tripdata.csv")
 
 
-##Mergeing Data frames into a single frame
+##Mergeing Data frames into a single data frame
 
 bike_rides = rbind(df_01,df_02,df_03,df_04,df_05,df_06,df_07,df_08,df_09,df_10,df_11,df_12)
 
@@ -45,7 +45,7 @@ bike_rides = bike_rides %>%
 bike_rides = bike_rides %>% 
   select(-c(start_station_name,start_station_id,end_station_name,end_station_id))
   
-##Creating columns for analysis
+##Creating new columns for analysis
 
 bike_rides$ride_length = difftime(bike_rides$ended_at,bike_rides$started_at) 
 bike_rides$date = as.Date(bike_rides$started_at) # in the format yyyy-mm-dd
