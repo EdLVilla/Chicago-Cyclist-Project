@@ -1,4 +1,4 @@
-Preparing RStudio
+##Preparing RStudio
 
 install.packages("tidyverse")
 install.packages("janitor")
@@ -9,3 +9,31 @@ library("tidyverse")
 library("janitor")
 library("lubridate")
 library("readr")
+
+
+##Creating Data frames
+
+df_01 = read_csv("~/Desktop/Google Case Study/CSV Files/202105-divvy-tripdata.csv")
+df_02 = read_csv("~/Desktop/Google Case Study/CSV Files/202106-divvy-tripdata.csv")
+df_03 = read_csv("~/Desktop/Google Case Study/CSV Files/202107-divvy-tripdata.csv")
+df_04 = read_csv("~/Desktop/Google Case Study/CSV Files/202108-divvy-tripdata.csv")
+df_05 = read_csv("~/Desktop/Google Case Study/CSV Files/202109-divvy-tripdata.csv")
+df_06 = read_csv("~/Desktop/Google Case Study/CSV Files/202110-divvy-tripdata.csv")
+df_07 = read_csv("~/Desktop/Google Case Study/CSV Files/202111-divvy-tripdata.csv")
+df_08 = read_csv("~/Desktop/Google Case Study/CSV Files/202112-divvy-tripdata.csv")
+df_09 = read_csv("~/Desktop/Google Case Study/CSV Files/202201-divvy-tripdata.csv")
+df_10 = read_csv("~/Desktop/Google Case Study/CSV Files/202202-divvy-tripdata.csv")
+df_11 = read_csv("~/Desktop/Google Case Study/CSV Files/202203-divvy-tripdata.csv")
+df_12 = read_csv("~/Desktop/Google Case Study/CSV Files/202204-divvy-tripdata.csv")
+
+
+##Mergeing Data frames into a single frame
+
+bike_rides = rbind(df_01,df_02,df_03,df_04,df_05,df_06,df_07,df_08,df_09,df_10,df_11,df_12)
+
+
+##bike_rides at a glance
+
+head(bike_rides)
+
+
