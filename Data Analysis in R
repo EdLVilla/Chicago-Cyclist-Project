@@ -1,1 +1,11 @@
+Preparing RStudio
 
+install.packages("tidyverse")
+install.packages("janitor")
+install.packages("lubridate")
+install.packages("readr")
+
+library("tidyverse")
+library("janitor")
+library("lubridate")
+library("readr")
