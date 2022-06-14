@@ -120,4 +120,56 @@ aggregate(bike_rides_v2$ride_length,
           by=list(bike_rides_v2$member_casual,bike_rides_v2$month),
           FUN = mean)
       
-      
+##Visualizations
+
+Total Rides by User: 
+  bike_rides_v2 %>% 
+   group_by(member_casual) %>%
+    summarise(number_of_rides = n()) %>%
+    ggplot(aes(x = member_casual , y = number_of_rides,fill = member_casual)) + geom_col()
+    
+Total Rides by Type of Bike by User:
+  bike_rides_v2 %>% 
+    group_by(member_casual,rideable_type) %>%
+    summarise(number_of_rides = n())%>%
+    ggplot(aes(x = rideable_type , y = number_of_rides,fill = member_casual)) + geom_col()  + facet_wrap(~ member_casual)
+    
+Total Rides per Month by User:
+  bike_rides_v2 %>%
+    group_by(member_casual,month) %>%
+    summarise(number_of_rides = n()) %>%
+    ggplot(aes(x = month, y = number_of_rides,fill = member_casual)) + geom_col() + facet_wrap(~ member_casual)
+    
+ Total Rides by Day of Week by User: 
+  bike_rides_v2 %>%
+    group_by(member_casual,day_of_week) %>%
+    summarise(number_of_rides = n() , average_duration = mean(ride_length)) %>%
+    arrange(member_casual,day_of_week)%>%
+    ggplot(aes(x = day_of_week,y=number_of_rides,fill = member_casual))+
+    geom_col()  + facet_wrap(~ member_casual)
+    
+ Average Rides by User: 
+  bike_rides_v2 %>% 
+    group_by(member_casual) %>%
+    summarise(avg_ride = mean(ride_length)) %>%
+    ggplot(aes(x = member_casual , y = avg_ride,fill = member_casual)) + geom_col() 
+ 
+ Average Rides by Type of Bike by User: 
+  bike_rides_v2 %>% 
+    group_by(member_casual,rideable_type) %>%
+    summarise(avg_ride = mean(ride_length))%>%
+    ggplot(aes(x = rideable_type , y = avg_ride,fill = member_casual)) + geom_col()  + facet_wrap(~ member_casual)
+    
+ Average Rides per Month by User: 
+  bike_rides_v2 %>%
+    group_by(member_casual,month) %>%
+    summarise(avg_ride = mean(ride_length)) %>%
+    ggplot(aes(x = month, y = avg_ride,fill = member_casual)) + geom_col() + facet_wrap(~ member_casual)
+    
+ Average Rides By Day of Week by User: 
+  bike_rides_v2 %>%
+    group_by(member_casual,day_of_week) %>%
+    summarise(number_of_rides = n() , average_duration = mean(ride_length)) %>%
+    arrange(member_casual,day_of_week)%>%
+    ggplot(aes(x = day_of_week,y=average_duration,fill = member_casual))+
+    geom_col()  + facet_wrap(~member_casual)   
